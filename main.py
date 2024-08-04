@@ -1,6 +1,7 @@
 import keyboard
 
 enabled = False
+isPressed = False
 
 
 def on_enable():
@@ -14,14 +15,18 @@ keyboard.add_hotkey("ctrl+shift+f", on_enable)
 
 
 def on_attack_press(event):
-    if enabled:
+    global isPressed
+    if enabled and not isPressed:
+        isPressed = True
         keyboard.press("1")
         keyboard.release("1")
         keyboard.press("h")
 
 
 def on_attack_release(event):
+    global isPressed
     if enabled:
+        isPressed = False
         keyboard.press("1")
         keyboard.release("1")
         keyboard.release("h")
