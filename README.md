@@ -3,6 +3,7 @@
 1. Set in your DST default key for attack to "H"
 
 2. Run main.py with
+
 On Windows:
 ``` shell 
 python main.py
