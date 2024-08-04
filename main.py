@@ -6,9 +6,13 @@ isPressed = False
 
 def onEnable():
     global isEnabled
-    isEnabled = True
+    isEnabled = not isEnabled
     keyboard.release("h")
-    print("isEnabled")
+
+    if isEnabled:
+        print("Enabled")
+    else:
+        print("Disabled")
 
 
 keyboard.add_hotkey("ctrl+shift+f", onEnable)
