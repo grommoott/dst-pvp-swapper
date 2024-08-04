@@ -1,38 +1,38 @@
 import keyboard
 
-enabled = False
+isEnabled = False
 isPressed = False
 
 
-def on_enable():
-    global enabled
-    enabled = True
+def onEnable():
+    global isEnabled
+    isEnabled = True
     keyboard.release("h")
-    print("Enabled")
+    print("isEnabled")
 
 
-keyboard.add_hotkey("ctrl+shift+f", on_enable)
+keyboard.add_hotkey("ctrl+shift+f", onEnable)
 
 
-def on_attack_press(event):
+def onAttackPress(event):
     global isPressed
-    if enabled and not isPressed:
+    if isEnabled and not isPressed:
         isPressed = True
         keyboard.press("1")
         keyboard.release("1")
         keyboard.press("h")
 
 
-def on_attack_release(event):
+def onAttackRelease(event):
     global isPressed
-    if enabled:
+    if isEnabled:
         isPressed = False
         keyboard.press("1")
         keyboard.release("1")
         keyboard.release("h")
 
 
-keyboard.on_press_key("f", on_attack_press)
-keyboard.on_release_key("f", on_attack_release)
+keyboard.on_press_key("f", onAttackPress)
+keyboard.on_release_key("f", onAttackRelease)
 
 keyboard.wait()
